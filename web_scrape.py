@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+"""
 # get the data
 data = requests.get('https://umggaming.com/leaderboards')
 
@@ -15,3 +16,16 @@ for tr in tbody.find_all('tr'):
 	username = tr.find_all('td')[1].find_all('a')[1].text.strip()
 	xp = tr.find_all('td')[3].text.strip()
 	print(place, username, xp)
+	
+"""
+
+animeData = requests.get('https://www.wcostream.com/black-clover-episode-169-english-dubbed')
+
+soup1 = BeautifulSoup(animeData.content, 'html.parser')
+
+link = soup1.find_all('video')
+
+with open ('animescrap.txt', 'w', encoding='utf-8') as f:
+	f.write(str(soup1))
+
+print("done")
